@@ -1,0 +1,13 @@
+services:
+  web:
+    image: traefik/whoami
+    ports:
+      - "8080:80"
+    depends_on:
+      - cache
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - cachedata:/data
+volumes:
+  cachedata:
